@@ -1,22 +1,27 @@
 
 # Summary #
 
-Deploy the provided application w/ end-to-end automation and auto-scaling capability to the public cloud.
+This exercise comes to test your ability to create all the basic resources we are using in our company
+this also serves as a way for us to view the way you interact with us and the team
+
+The application you will need to compile and run is a GO application - We chose this since it's a simple enough example but still includes
+elements that you might need to do some research to manage to work with but there is ample documentation for you to use.
+
+
 
 # Exercise #
 
-## Important Note ##
+### review the code you have and understand the basics of how it works
 
-The technologies, tools, processes and resources for this exercise are totally at your discretion. If you feel it necessary, please include 1-2 sentences for any technology/tool/process that is selected, in the README for your project.
-
-## Required Steps ##
+ * the code you will need to compile is in app/server.go file
+ * you can use any compiler you choose for this example
 
 ### Create a GitHub (or other) source control account ##
 
 * Create a source project repository for this exercise.
 * Create a README for the source project, which includes some of the following information:
     * A summary of the exercise as executed.
-    * Any important details (tools utilized, OSS component dependencies, etc.) in support of the exercise. 
+    * Any important details (tools utilized, OSS component dependencies, etc.) in support of the exercise.
     * URLs or sources of information used to create your work.
     * Any other information you think is pertinent.
 * All best practices for source control should be utilized.
@@ -26,24 +31,22 @@ The technologies, tools, processes and resources for this exercise are totally a
 * The application must be deployed fully via an automated process.
 * Include details as to how you believe this process would be triggered in your source project README.
 
-### Create a test suite to validate the results of your orchestration processes ##
+### Install Jenkins on an ec2 machine
 
-* What needs to be tested throughout this process? How is it tested?
+  * Deploy the ec2 instance using Terraform
+  * you may install Jenkins manually or use any automation tool you feel comforatble with
+  * Install the required plugins as necessary
 
-## Optional Steps ##
+### Create a docker container to wrap the built binary and run it
 
-### Create an AWS (or other Public Cloud) free tier account ###
+ * Create a Jenkins pipeline to compile and build the binary and docker container
+ * Push the docker container into an ECR
 
-* You may use any cloud resource/service offering by the Public Cloud vendor selected.
-* Include details in the source projects README about the services selected, including the following information:
-    * What services/resources are being used?
-    * Why were those services/resources used?
+### Create a terraform which will install eks cluster with 1 node
 
-### Deploy the provided Go application to the Public Cloud ###
+### Create a helm chart to deploy new container 
 
-* The cloud resources must be deployed fully via an automated process.
-* The application must scale when placed under load. 
-    * The process to decide how and when to scale is also at your discretion.
+### modify pipeline to deploy the new container using the previous helm chart
 
 ### Provide functional FQDN/endpoint for review ###
 
