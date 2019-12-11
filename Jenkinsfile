@@ -31,6 +31,7 @@ pipeline {
                 branch 'master'
             }
             steps { 
+                sh 'echo a'
                 //sh './jenkins_files/deploy.sh'
             }
         }
