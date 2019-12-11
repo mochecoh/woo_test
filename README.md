@@ -11,47 +11,34 @@ elements that you might need to do some research to manage to work with but ther
 
 # Exercise #
 
-### review the code you have and understand the basics of how it works
+### Part 1: Understand the code and dockerize it 20 minutes
 
- * the code you will need to compile is in app/server.go file
- * you can use any compiler you choose for this example
+ * I never used go, but the code is pretty simple.
+ * The Docker image is actually heavy, but i didnt want to loose time on 
 
-### Create a GitHub (or other) source control account ##
+### Part 2: Deploy Jenkins via terraform (fully automated) 3 h
 
-* Create a source project repository for this exercise.
-* Create a README for the source project, which includes some of the following information:
-    * A summary of the exercise as executed.
-    * Any important details (tools utilized, OSS component dependencies, etc.) in support of the exercise.
-    * URLs or sources of information used to create your work.
-    * Any other information you think is pertinent.
-* All best practices for source control should be utilized.
+ * The fully automated part wasnt nessecary and i did loose a lot of time on it, but it works finally
+ * I used the Dockerized Jenkins, who already have Docker inside. 
+ * Many "bugs" came up in the provisionning, and the jenkins plugins server was down most of the time
 
-### Create application and cloud resource orchestration deployment processes to deploy the provided Go application ###
+### Part 3 Deploy an EKS via Terraform 20 minutes
 
-* The application must be deployed fully via an automated process.
-* Include details as to how you believe this process would be triggered in your source project README.
+ * The main code is from AWS https://github.com/terraform-providers/terraform-provider-aws
 
-### Install Jenkins on an ec2 machine
+### Part 4 Make a pipeline who push to ECR 45 min
 
-  * Deploy the ec2 instance using Terraform
-  * you may install Jenkins manually or use any automation tool you feel comforatble with
-  * Install the required plugins as necessary
+ * Problems of Credentials with Aws came up 
 
-### Create a docker container to wrap the built binary and run it
+### Part 5 Deploy The helm Chart to EKS 45 min
 
- * Create a Jenkins pipeline to compile and build the binary and docker container
- * Push the docker container into an ECR
+ * The Chart is in helm/helm-chart/myserver
+ * I use a nginx ingress
 
-### Create a terraform which will install eks cluster with 1 node
+### Part 6 Install kubectl in Jenkins and make the deploy from there 1 h
 
-### Create a helm chart to deploy new container 
+ * kubectl in jenkins is not working
 
-### modify pipeline to deploy the new container using the previous helm chart
 
-### Provide functional FQDN/endpoint for review ###
-
-* This application should be accessible via the public internet.
-
-## Completing Task ##
-
-* Provide a link to your source project repository.
+Link of the app: http://a566ac6371c2e11eaae8c02386108a07-269203944.us-west-2.elb.amazonaws.com/
+Link of the Github: https://github.com/mochecoh/woo_test

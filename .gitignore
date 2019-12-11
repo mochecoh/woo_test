@@ -1,2 +1,3 @@
 /terraform/.terraform
-/terraform_go
+
+/terraform/eks/.terraform
