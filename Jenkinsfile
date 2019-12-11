@@ -25,8 +25,7 @@ pipeline {
 
         stage('deploy'){
             steps { 
-                sh 'echo a'
-                //sh './jenkins_files/deploy.sh'
+                sh './jenkins_files/deploy.sh'
             }
         }
 //release

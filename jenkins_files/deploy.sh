@@ -1,4 +1,4 @@
 #/bin/bash
 echo "-----------DEPLOY IN EC2-------------"
 
-helm upgrade --install --wait myserver ./helm/helm-chart/myserver --namespace test
+helm upgrade --install --wait geared-alpaca ./helm/helm-charts/myserver
