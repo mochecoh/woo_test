@@ -1,4 +1,5 @@
 #/bin/bash
+kubectl get all
 a=$(docker ps -a | grep "myserver" | cut -d " " -f9)
 if [ $a ] 
 then
