@@ -1,0 +1,10 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: {{ .Chart.Name }}
+data:
+  default.yaml: |
+    port: {{ .Values.configMap.port }}
+    loglevel: {{ .Values.configMap.loglevel }}
+    persist: {{ .Values.configMap.persist }}
+    mongodburl: mongodb://{{ .Values.configMap.username }}:{{ .Values.configMap.password }}@mongodb.default.svc.cluster.local/{{ .Values.configMap.database }}

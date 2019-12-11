@@ -28,8 +28,12 @@ resource "aws_instance" "jenkins" {
         }
     
     provisioner "file" {
-    source      = "install_docker_jenkins.sh"
-    destination = "/home/ubuntu/install_jenkins.sh"
+    source      = "install_docker.sh"
+    destination = "/home/ubuntu/install_docker.sh"
+    }
+    provisioner "file" {
+    source      = "run_jenkins.sh"
+    destination = "/home/ubuntu/run_jenkins.sh"
     }
     provisioner "file" {
     source      = "Dockerfile"
@@ -37,8 +41,10 @@ resource "aws_instance" "jenkins" {
     }
     provisioner "remote-exec" {
     inline = [
-      "chmod +x /home/ubuntu/install_jenkins.sh",
-      "/home/ubuntu/install_jenkins.sh",
+      "chmod +x /home/ubuntu/install_docker.sh",
+      "/home/ubuntu/install_docker.sh",
+      "chmod +x /home/ubuntu/run_jenkins.sh",
+      "/home/ubuntu/run_jenkins.sh",
     ]
   }
 }

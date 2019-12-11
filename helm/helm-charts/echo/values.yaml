@@ -1,0 +1,43 @@
+# Default values for echo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image: 384842694817.dkr.ecr.us-east-2.amazonaws.com/myserver:latest
+requests:
+  memory: 32Mi
+  cpu: 100m
+
+limits:
+  memory: 128Mi
+  cpu: 500m
+
+containerport: 3000
+
+mount:
+  name: config-volume
+  path: /app/config
+
+volumes:
+  name: config-volume
+
+configMap:
+  port: 3000
+  loglevel: info
+  persist: false
+  dbUser: echo
+  dbPassword: mypassword
+  mongourl: mongodb.default.svc.cluster.local
+  mongoPort: 27017
+  database: echo
+
+service:
+  port: 80
+  targetport: 3000
+
+ingress:
+  host: mc.ml
+  path: /
+  servicePort: 80
+

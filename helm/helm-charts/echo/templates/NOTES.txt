@@ -1,0 +1,4 @@
+1. Get the application URL by running these commands:
+replicas: {{ .Values.replicaCount }}
+mongo url: {{ .Values.configMap.mongourl }}
+
