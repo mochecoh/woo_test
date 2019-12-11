@@ -11,12 +11,34 @@ elements that you might need to do some research to manage to work with but ther
 
 # Exercise #
 
-### review the code you have and understand the basics of how it works
+### Part 1: Understand the code and dockerize it 20 minutes
+
+ * I never used go, but the code is pretty simple.
+ * The Docker image is actually heavy, but i didnt want to loose time on 
+
+### Part 2: Deploy Jenkins via terraform (fully automated) 3 h
+
+ * The fully automated part wasnt nessecary and i did loose a lot of time on it, but it works finally
+ * I used the Dockerized Jenkins, who already have Docker inside. 
+ * Many "bugs" came up in the provisionning, and the jenkins plugins server was down most of the time
+
+### Part 3 Deploy an EKS via Terraform 20 minutes
+
+ * The main code is from AWS https://github.com/terraform-providers/terraform-provider-aws
+
+### Part 4 Make a pipeline who push to ECR 40 min
+
+ * Problems of Credentials with Aws came up 
+
+### Part 5 Deploy The helm Chart to EKS
 
  * the code you will need to compile is in app/server.go file
  * you can use any compiler you choose for this example
 
-### Create a GitHub (or other) source control account ##
+### Part 6 install kubectl in Jenkins and make the deploy from there
+
+ * the code you will need to compile is in app/server.go file
+ * you can use any compiler you choose for this example
 
 * Create a source project repository for this exercise.
 * Create a README for the source project, which includes some of the following information:

@@ -10,7 +10,7 @@ docker run -d -p 8080:8080 --name myserver myserver
 
 hostip=$(/sbin/ip route|awk '/default/ { print $3 }')
 
-sleep 5
+sleep 20
 
 a=$(docker ps -a | grep "ted_search" | cut -d " " -f9)
 if [ $a ] 

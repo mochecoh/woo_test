@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myserver
+  labels:
+    app: myserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myserver
+  template:
+    metadata:
+      labels:
+        app: myserver
+    spec:
+      containers:
+        - name: myserver
+          image: 384842694817.dkr.ecr.us-west-2.amazonaws.com/myserver:latest
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: myserver
