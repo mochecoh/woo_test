@@ -1,15 +1,6 @@
-provider "aws" {
- region = "us-east-2"
-}
-
-resource "aws_key_pair" "ec2key" {
-  key_name = "publicKey"
-  public_key = "${file(var.public_key_path)}"
-}
-
-resource "aws_instance" "jenkins" {
+resource "aws_instance" "app" {
     ami = "${var.instance_ami}"
-    instance_type = "t2.xlarge"
+    instance_type = "${var.instance_type}"
     subnet_id ="${aws_subnet.main-public.id}"
     vpc_security_group_ids = [
                                 "${aws_security_group.allow-ssh.id}",
@@ -17,7 +8,7 @@ resource "aws_instance" "jenkins" {
                             ]
     key_name = "${aws_key_pair.ec2key.key_name}"
     tags = {
-        Name = "jenkins"
+        Name = "app"
     }
     associate_public_ip_address = "true"
     connection {
@@ -28,26 +19,23 @@ resource "aws_instance" "jenkins" {
         }
     
     provisioner "file" {
-    source      = "install_docker_jenkins.sh"
-    destination = "/home/ubuntu/install_jenkins.sh"
+    source      = "install_docker.sh"
+    destination = "/home/ubuntu/install_docker.sh"
     }
     provisioner "file" {
-    source      = "Dockerfile"
+    source      = "run_app.sh"
+    destination = "/home/ubuntu/run_app.sh"
+    }
+    provisioner "file" {
+    source      = "./dockerfiles/Dockerfile_app"
     destination = "/home/ubuntu/Dockerfile"
     }
     provisioner "remote-exec" {
     inline = [
-      "chmod +x /home/ubuntu/install_jenkins.sh",
-      "/home/ubuntu/install_jenkins.sh",
+      "chmod +x /home/ubuntu/install_docker.sh",
+      "chmod +x /home/ubuntu/run_app.sh",
+      "/home/ubuntu/install_docker.sh",
+      "/home/ubuntu/run_app.sh",
     ]
   }
-}
-
-terraform {
- backend "s3" {
- encrypt = true
- bucket = "ww-develeap"
- region = "us-east-2"
- key = "ww/terraform.tfstate"
- }
 }
