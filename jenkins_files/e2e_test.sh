@@ -6,7 +6,7 @@ then
     echo "------------------------- docker ted_search removed ---------------------"
 fi
 
-docker run -d -p 8080:8080 --name myserver ted_image
+docker run -d -p 8080:8080 --name myserver myserver
 
 hostip=$(/sbin/ip route|awk '/default/ { print $3 }')
 

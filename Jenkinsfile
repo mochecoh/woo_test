@@ -16,9 +16,6 @@ pipeline {
         }
 
         stage('publish'){
-            when {
-                branch 'master'
-            }
             steps { 
                 withAWS(credentials: 'aws_key', region: 'us-west-2') {
                     sh './jenkins_files/publish.sh'
@@ -27,9 +24,6 @@ pipeline {
         }
 
         stage('deploy'){
-            when {
-                branch 'master'
-            }
             steps { 
                 sh 'echo a'
                 //sh './jenkins_files/deploy.sh'
