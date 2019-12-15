@@ -37,8 +37,9 @@ elements that you might need to do some research to manage to work with but ther
 
 ### Part 6 Install kubectl and helm in Jenkins and make the deploy from there 2 h
 
- * The installation script of helm didnt worked on Jenkins, i try many of them, until i decide to modify one of them
+ * The installation script of helm didnt work on Jenkins, i try many of them, until i decide to modify one.
 
 
 Link of the app: http://a566ac6371c2e11eaae8c02386108a07-269203944.us-west-2.elb.amazonaws.com/
+
 Link of the Github: https://github.com/mochecoh/woo_test
